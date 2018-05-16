@@ -54,7 +54,10 @@ public class Servlet extends HttpServlet {
                     append(":").append(ss).toString();
             request.setAttribute(View.diskDurationValue, soundsDuration);
         } else if (request.getParameter(View.diskSortButton) != null) {
-            model.sortByStyle(model.getDisk(), MusicGenre.getGenreByString(request.getParameter(View.diskGenres)));
+            model.sortByStyle(model.getDisk(),
+                    MusicGenre.getGenreByString(
+                            request.getParameter(
+                                    View.diskGenres)));
         } else if (request.getParameter(View.diskFindButton) != null) {
             String fromStr = request.getParameter(View.diskFindFrom);
             String toStr = request.getParameter(View.diskFindTo);

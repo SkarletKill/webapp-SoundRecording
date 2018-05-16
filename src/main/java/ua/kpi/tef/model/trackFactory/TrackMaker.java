@@ -27,8 +27,9 @@ public class TrackMaker implements ITrackMaker {
                 track.setAlbum((String) value);
                 break;
             case "genre":
+                String val = (String) value;
                 for (MusicGenre genre: MusicGenre.values()) {
-                    if(genre.name().equals(value)){
+                    if(genre.name().equals(val.toUpperCase())){
                         track.setGenre(genre);
                         break;
                     }
