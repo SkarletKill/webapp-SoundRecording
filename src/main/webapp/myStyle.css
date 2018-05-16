@@ -1,0 +1,109 @@
+.main-block{
+    background-color: brown;
+}
+
+form {
+    align-content: center;
+    margin: 0;
+}
+
+label {
+    font-size: 16px;
+    width: 100px;
+    align-self: center;
+}
+
+input {
+    padding-left: 5px;
+    width: 120px;
+    align-self: center;
+}
+
+select, input{
+    height: 30px;
+    width: 120px;
+}
+
+.center {
+    align-self: center;
+}
+
+.center-items {
+    align-items: center;
+}
+
+.submit {
+    display: inline-block;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 15px;
+}
+
+.disk, .duration, .sort, .find {
+    display: block;
+    width: 200px;
+}
+
+.list{
+    margin-left: 10%;
+}
+
+.limited{
+    width: 60px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 120px 150px 150px;
+    align-content: center;
+    justify-content: start;
+    grid-column-gap: 5px;
+    margin-left: 10%;
+    height: 70px;
+}
+
+.grid-container-2half {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-content: center;
+    justify-content: start;
+    grid-column-gap: 5px;
+    margin: 50px;
+}
+
+.grid-container-2 {
+    display: grid;
+    grid-template-columns: 150px 150px;
+    grid-column: 2 / span 2;
+    align-content: center;
+    justify-content: start;
+    grid-column-gap: 5px;
+}
+
+.gc-p{
+    grid-template-columns: 100px 100px 250px;
+    margin: 0;
+}
+
+.gc-p2 {
+    grid-template-columns: 260px 150px;
+}
+
+.grid-container-pl-two {
+    display: grid;
+    grid-template-columns: 100px 250px;
+    align-content: center;
+    justify-content: start;
+    grid-column-gap: 5px;
+    height: 70px;
+}
+
+.gcf-3 {
+    grid-template-columns: 33% 33% 33%;
+}
+
+.track > form > div > input, .track > form > div > select, .track > input, .write > form > select{
+    width: 200px;
+}

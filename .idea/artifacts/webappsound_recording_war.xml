@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="webappsound_recording:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="SoundRecording.war">
+      <element id="artifact" artifact-name="webappsound_recording:war exploded" />
+    </root>
+  </artifact>
+</component>
