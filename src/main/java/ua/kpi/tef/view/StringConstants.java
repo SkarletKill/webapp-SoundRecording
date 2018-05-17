@@ -8,14 +8,7 @@ import java.util.ResourceBundle;
  */
 
 public interface StringConstants {
-//     Resource Bundle Installation's
-    public static String MESSAGES_BUNDLE_NAME = "messages";
-    public static ResourceBundle bundle =
-            ResourceBundle.getBundle(
-                    MESSAGES_BUNDLE_NAME,
-                    //new Locale("ua"));    // Ukrainian
-                    new Locale("en"));    // English
-
+    String LANGUAGE_SELECT = "language.select";
     String DISK_TEXT = "disk.text";
     String DISK_SELECT = "disk.select";
     String DISK_DURATION_TEXT = "disk.duration.text";

@@ -1,5 +1,7 @@
 package ua.kpi.tef.model;
 
+import ua.kpi.tef.view.View;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,8 +15,8 @@ public class Entity {
 
     static{
         new Disk("Local disk A:", 4000);
-//        new Disk("Local disk B:", 4000);
-//        new Disk("Local disk C:", 4000);
+        new Disk("Local disk B:", 4000);
+        new Disk("Local disk C:", 4000);
     }
 
     public Entity() {

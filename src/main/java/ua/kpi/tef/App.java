@@ -16,7 +16,8 @@ public class App {
 //        Track firstTrack = new Track("This is war", 180000, 8000);
 //        list.add(firstTrack);
 //        System.out.println(list.getFirst());
-        View view = new View();
-        System.out.println(view.getLocaleMassage("disk.text"));
+
+//        View.changeLanguage(false);
+        System.out.println(View.getLocaleMassage("disk.text"));
     }
 }

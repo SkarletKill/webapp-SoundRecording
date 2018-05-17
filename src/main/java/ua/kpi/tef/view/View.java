@@ -1,13 +1,28 @@
 package ua.kpi.tef.view;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 /**
  * Created by SkarletRED on 07.05.2018.
  */
 
 public class View implements StringConstants{
+    public static String en = "en";
+    public static String ua = "ua";
+
+    //     Resource Bundle Installation's
+    private static String MESSAGES_BUNDLE_NAME = "messages";
+    private static ResourceBundle bundle =
+            ResourceBundle.getBundle(
+                    MESSAGES_BUNDLE_NAME,
+//                    new Locale(ua));    // Ukrainian
+                    new Locale(en));    // English
 
     public static String model = "model";
 
+    public static String language = "language";
+    public static String languageButton = "language";
     public static String disksForDisk = "d-disks[]";
     public static String diskDuration = "duration";
     public static String diskDurationValue = "durationValue";
@@ -36,5 +51,10 @@ public class View implements StringConstants{
      */
     public static String getLocaleMassage(String bundleMsg){
         return bundle.getString(bundleMsg);
+    }
+
+    public static void changeLanguage(boolean english){
+        bundle = ResourceBundle.getBundle(MESSAGES_BUNDLE_NAME,
+                new Locale((english)? en: ua));
     }
 }

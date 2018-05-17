@@ -29,6 +29,7 @@ public class Servlet extends HttpServlet {
         commands.put(View.diskSortButton, new SortByGenre());
         commands.put(View.diskFindButton, new FindTracks());
         commands.put(View.disksForDisk, new SelectDisk());
+        commands.put(View.language, new ChangeLanguage());
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

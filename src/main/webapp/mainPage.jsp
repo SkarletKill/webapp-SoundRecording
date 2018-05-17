@@ -14,6 +14,7 @@
 <head>
     <title>Sound Recording</title>
     <link rel="stylesheet" type="text/css" href="myStyle.css">
+    <meta charset="UTF-8">
 </head>
 <body>
 <h2>Hello Skarlet's recording studio!</h2>
@@ -108,6 +109,15 @@
         <div class="playlist grid-container-pl-two">
             <label><%= View.getLocaleMassage(View.PLAYLIST_TEXT) %>:
                 (<%= model.getTrackList().size()%>)</label>
+            <form method="post" action="servlet" class="grid-container-2 gc-p2">
+                <div></div>
+                <select name="<%=View.language%>" onchange="this.parentElement.submit()">
+                    <option value="0" selected disabled style="display: none"><%= View.getLocaleMassage(View.LANGUAGE_SELECT) %>
+                    </option>
+                    <option value="en">English</option>
+                    <option value="ua">Українська</option>
+                </select>
+            </form>
         </div>
         <div class="track">
             <form action="servlet" method="post">
