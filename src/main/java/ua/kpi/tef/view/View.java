@@ -24,6 +24,7 @@ public class View implements StringConstants{
     public static String songGenre = "genre";
     public static String songGenres = "p-genres[]";
     public static String plButtonAdd = "add-song";
+    public static String plButtonClear = "clear";
     public static String disksForPl = "p-disks[]";
     public static String plWriteButton = "write";
     /**

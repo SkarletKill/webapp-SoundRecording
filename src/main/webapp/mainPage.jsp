@@ -27,7 +27,7 @@
         <div class="disk grid-container">
             <label><%= View.getLocaleMassage(View.DISK_TEXT) %>
             </label>
-            <form action="servlet" method="get">
+            <form action="servlet" method="post">
                 <select name="<%=View.disksForDisk%>" onchange="this.parentElement.submit()">
                     <option value="0" selected disabled style="display: none"><%= View.getLocaleMassage(View.DISK_SELECT) %>
                     </option>
@@ -92,7 +92,7 @@
             </label>
             <div class="tracklist grid-container-2">
                 <% TrackList trackList = model.getDisk().getTrackList(); %>
-                <% if(request.getParameter(View.diskFindFilter) != null) { %>
+                <% if(request.getAttribute(View.diskFindFilter) != null) { %>
                     <% trackList = (TrackList) request.getAttribute(View.diskFindFilter); %>
                 <% } %>
                 <% for (Track track: trackList) { %>
@@ -132,10 +132,14 @@
                     </select>
                 </div>
 
-                <div class="button-add grid-container-pl-two">
+                <div class="grid-container button-add">
                     <div></div>
-                    <input type="submit" class="submit" value="<%=View.getLocaleMassage(View.PLAYLIST_BUTTON_ADD)%>"
-                            name="<%=View.plButtonAdd%>">
+                    <%--<div class="grid-container-2 gc-p2">--%>
+                        <input type="submit" class="submit" value="<%=View.getLocaleMassage(View.PLAYLIST_BUTTON_ADD)%>"
+                                name="<%=View.plButtonAdd%>">
+                        <input type="submit" class="submit" value="<%=View.getLocaleMassage(View.PLAYLIST_BUTTON_CLEAR)%>"
+                               name="<%=View.plButtonClear%>">
+                    <%--</div>--%>
                 </div>
             </form>
         </div>

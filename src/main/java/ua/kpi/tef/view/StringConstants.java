@@ -36,6 +36,7 @@ public interface StringConstants {
     String PLAYLIST_SONG_GENRE= "playlist.song.genre";
     String PLAYLIST_SONG_DURATION= "playlist.song.duration";
     String PLAYLIST_BUTTON_ADD= "playlist.add.button";
+    String PLAYLIST_BUTTON_CLEAR= "playlist.clear.button";
     String PLAYLIST_BUTTON_WRITE= "playlist.write.button";
     String PLAYLIST_WRITE_TEXT= "playlist.write.text";
 }
