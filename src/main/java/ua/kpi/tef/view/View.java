@@ -24,7 +24,7 @@ public class View implements StringConstants{
     public static String language = "language";
     public static String languageButton = "language";
     public static String disksForDisk = "d-disks[]";
-    public static String diskDuration = "duration";
+    public static String diskDuration = "d-duration";
     public static String diskDurationValue = "durationValue";
     public static String diskCountButton = "count";
     public static String diskGenres = "d-genres[]";
@@ -37,11 +37,15 @@ public class View implements StringConstants{
     public static String songTitle = "title";
     public static String songArtist = "artist";
     public static String songGenre = "genre";
+    public static String songDuration = "duration";
     public static String songGenres = "p-genres[]";
     public static String plButtonAdd = "add-song";
     public static String plButtonClear = "clear";
     public static String disksForPl = "p-disks[]";
     public static String plWriteButton = "write";
+
+    public static String REGEX_DURATION = "\\d{1,2}:\\d{1,2}";
+    public static String SING_DOUBLEPOINT = ":";
     /**
      * This method is used to get message which it
      * accept as a parameter, but translated with

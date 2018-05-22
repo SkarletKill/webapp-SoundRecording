@@ -21,8 +21,8 @@ public class FindTracks implements Command {
         String toStr = request.getParameter(View.diskFindTo);
 
         try {
-            if (!fromStr.matches("\\d{1,2}:\\d{1,2}")) throw new InvalidTimeFormatExeption();
-            if (!toStr.matches("\\d{1,2}:\\d{1,2}")) throw new InvalidTimeFormatExeption();
+            if (!fromStr.matches(View.REGEX_DURATION)) throw new InvalidTimeFormatExeption();
+            if (!toStr.matches(View.REGEX_DURATION)) throw new InvalidTimeFormatExeption();
             List<Integer> fromArr = Arrays.stream(fromStr.split(":")).map((String e) -> Integer.parseInt(e)).collect(Collectors.toList());
             List<Integer> toArr = Arrays.stream(toStr.split(":")).map((String e) -> Integer.parseInt(e)).collect(Collectors.toList());
             int from = (fromArr.get(0) * 60 + fromArr.get(1)) * 1000;

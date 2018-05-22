@@ -88,21 +88,24 @@
             </form>
         </div>
 
-        <div class="list grid-container">
+        <div class="list grid-container fix-content">
             <label><%= View.getLocaleMassage(View.DISK_TRACKLIST_TEXT) %>
             </label>
-            <div class="tracklist grid-container-2">
+            <%--<div class="tracklist grid-container-2 fix-content">--%>
+            <div class="tracklist">
                 <% TrackList trackList = model.getDisk().getTrackList(); %>
                 <% if(request.getAttribute(View.diskFindFilter) != null) { %>
                     <% trackList = (TrackList) request.getAttribute(View.diskFindFilter); %>
                 <% } %>
                 <% for (Track track: trackList) { %>
                     <label value="<%=track%>"><%=track.getTitle()%></label>
+                    <br>
                 <% } %>
                 <%--<c:forEach items="${model.getDisk().getTrackList()}" var="item">--%>
                     <%--<label value="${item}">${item.getTitle()}</label>--%>
                 <%--</c:forEach>--%>
             </div>
+            <div></div>
         </div>
     </div>
     <div class="playlist-block">
@@ -140,6 +143,12 @@
                             <option value="${item.name().toLowerCase()}">${item.name()}</option>
                         </c:forEach>
                     </select>
+                </div>
+
+
+                <div class="s-duration grid-container-pl-two">
+                    <label><%= View.getLocaleMassage(View.PLAYLIST_SONG_DURATION) %></label>
+                    <input type="text" value="" name="<%=View.songDuration%>" class="field" />
                 </div>
 
                 <div class="grid-container button-add">
