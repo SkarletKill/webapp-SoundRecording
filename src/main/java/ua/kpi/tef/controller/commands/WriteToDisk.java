@@ -1,6 +1,6 @@
 package ua.kpi.tef.controller.commands;
 
-import ua.kpi.tef.model.DiskSpaceExeption;
+import ua.kpi.tef.model.exeptions.DiskSpaceExeption;
 import ua.kpi.tef.model.Entity;
 import ua.kpi.tef.view.View;
 

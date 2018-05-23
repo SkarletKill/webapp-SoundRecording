@@ -1,4 +1,4 @@
-package ua.kpi.tef.model;
+package ua.kpi.tef.model.exeptions;
 
 /**
  * Created by SkarletRED on 16.05.2018.

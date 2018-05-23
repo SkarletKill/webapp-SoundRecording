@@ -1,5 +1,7 @@
 package ua.kpi.tef.model;
 
+import ua.kpi.tef.model.exeptions.DiskSpaceExeption;
+
 import java.util.ArrayList;
 
 /**

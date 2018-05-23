@@ -69,8 +69,4 @@
     </dependency>
 
   </dependencies>
-
-  <!--<build>-->
-    <!--<finalName>SoundRecording</finalName>-->
-  <!--</build>-->
 </project>

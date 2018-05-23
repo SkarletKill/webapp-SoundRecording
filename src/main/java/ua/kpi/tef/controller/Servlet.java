@@ -60,29 +60,4 @@ public class Servlet extends HttpServlet {
         }
         return null;
     }
-
-//    private void readDisksFromDatabase() {
-//        DBWorker worker = new DBWorker();
-//        String query = "SELECT * FROM soundrecording.disks";
-//
-//        try {
-//            if (!worker.getConnection().isClosed()) {
-//                System.out.println("Connected to Database");
-//            }
-//
-//            Statement statement = worker.getConnection().createStatement();
-////            statement.executeUpdate("UPDATE soundrecording.disks SET freeCapacity = fullCapacity");
-//            ResultSet resultSet = statement.executeQuery(query);
-//            while (resultSet.next()) {
-//                String title = resultSet.getString("title");
-//                int fullCapacity = resultSet.getInt("fullCapacity");
-//                new Disk(title, fullCapacity);
-//            }
-//
-//            worker.getConnection().close();
-//
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
 }

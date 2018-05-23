@@ -1,7 +1,7 @@
 package ua.kpi.tef.controller.commands;
 
 import ua.kpi.tef.model.Entity;
-import ua.kpi.tef.model.InvalidTimeFormatExeption;
+import ua.kpi.tef.model.exeptions.InvalidTimeFormatExeption;
 import ua.kpi.tef.model.TrackList;
 import ua.kpi.tef.view.View;
 
