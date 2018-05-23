@@ -75,6 +75,10 @@ public class Disk {
         return trackList;
     }
 
+    public long getFreeCapacity() {
+        return freeCapacity;
+    }
+
     public String getTitle() {
         return title;
     }

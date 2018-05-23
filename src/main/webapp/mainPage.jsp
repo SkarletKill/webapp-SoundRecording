@@ -3,7 +3,6 @@
   Created by NeO
   Date: 07.05.2018
   Time: 20:46
-  To change this template use File | Settings | File Templates.
 --%>
 
 <%@ page import="ua.kpi.tef.view.View" %>
@@ -18,9 +17,6 @@
 </head>
 <body>
 <h2>Hello Skarlet's recording studio!</h2>
-<%--<jsp:useBean id="servlet" scope="application" class="ua.kpi.tef.controller.Servlet">--%>
-    <%--<jsp:setProperty name="servlet" property="*"/>--%>
-<%--</jsp:useBean>--%>
 
 <% Entity model = (Entity) session.getAttribute(View.model); %>
 <div class="main-block grid-container-2half">
@@ -91,7 +87,6 @@
         <div class="list grid-container fix-content">
             <label><%= View.getLocaleMassage(View.DISK_TRACKLIST_TEXT) %>
             </label>
-            <%--<div class="tracklist grid-container-2 fix-content">--%>
             <div class="tracklist">
                 <% TrackList trackList = model.getDisk().getTrackList(); %>
                 <% if(request.getAttribute(View.diskFindFilter) != null) { %>
@@ -101,9 +96,6 @@
                     <label value="<%=track%>"><%=track.getTitle()%></label>
                     <br>
                 <% } %>
-                <%--<c:forEach items="${model.getDisk().getTrackList()}" var="item">--%>
-                    <%--<label value="${item}">${item.getTitle()}</label>--%>
-                <%--</c:forEach>--%>
             </div>
             <div></div>
         </div>
@@ -153,12 +145,10 @@
 
                 <div class="grid-container button-add">
                     <div></div>
-                    <%--<div class="grid-container-2 gc-p2">--%>
                         <input type="submit" class="submit" value="<%=View.getLocaleMassage(View.PLAYLIST_BUTTON_ADD)%>"
                                 name="<%=View.plButtonAdd%>">
                         <input type="submit" class="submit" value="<%=View.getLocaleMassage(View.PLAYLIST_BUTTON_CLEAR)%>"
                                name="<%=View.plButtonClear%>">
-                    <%--</div>--%>
                 </div>
             </form>
         </div>

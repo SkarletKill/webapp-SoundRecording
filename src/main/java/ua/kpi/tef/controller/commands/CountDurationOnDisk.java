@@ -14,10 +14,11 @@ public class CountDurationOnDisk implements Command {
     @Override
     public String execute(HttpServletRequest request, Entity model) {
         int hh, mm, ss = 0;
-        for (Track track :
-                model.getDisk().getTrackList()) {
-            ss += track.getDuration() / 1000;
-        }
+//        for (Track track :
+//                model.getDisk().getTrackList()) {
+//            ss += track.getDuration() / 1000;
+//        }
+        ss += model.countDuration(model.getDisk()) / 1000;
         hh = ss / 3600;
         ss %= 3600;
         mm = ss / 60;

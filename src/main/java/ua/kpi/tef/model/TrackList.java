@@ -23,6 +23,7 @@ public class TrackList extends ArrayList<Track> {
     }
 
     public long getOccupiedSpace() {
+        countCapacity();
         return occupiedSpace;
     }
 

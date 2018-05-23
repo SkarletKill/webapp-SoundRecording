@@ -57,24 +57,6 @@ public class Entity {
         disk.getTrackList().addAll(withoutGenre);
     }
 
-    /**
-     * Find a song that matches the specified range of trackFactory lengths on the disk.
-     *
-     * @param from
-     * @param to
-     * @return found
-     */
-    public Track findTrack(Disk disk, int from, int to) {
-        Track found = null;
-        for (Track track : disk.getTrackList()) {
-            if (valueBetween(track.getDuration(), from, to)) {
-                found = track;
-                break;
-            }
-        }
-        return found;
-    }
-
     private boolean valueBetween(int value, int from, int to) {
         return value > from && value < to;
     }
