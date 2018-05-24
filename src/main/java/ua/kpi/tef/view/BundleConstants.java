@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
  * Created by SkarletRED on 07.05.2018.
  */
 
-public interface StringConstants {
+public interface BundleConstants {
     String LANGUAGE_SELECT = "language.select";
     String DISK_TEXT = "disk.text";
     String DISK_SELECT = "disk.select";

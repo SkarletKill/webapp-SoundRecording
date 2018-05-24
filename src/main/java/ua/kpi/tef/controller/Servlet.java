@@ -16,7 +16,7 @@ public class Servlet extends HttpServlet {
     private String diskOutOfMemory = "diskSpaceException.jsp";
     private Entity model = new Entity();
     private Map<String, Command> commands;
-    Command command = null;
+    private Command command = null;
 
     @Override
     public void init() throws ServletException {
@@ -33,6 +33,7 @@ public class Servlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         try {
             command = commands.get(getCommandName(request));
         } catch (NullPointerException ex){
@@ -53,7 +54,7 @@ public class Servlet extends HttpServlet {
         return model;
     }
 
-    public String getCommandName(HttpServletRequest request) {
+    private String getCommandName(HttpServletRequest request) {
         for (String commandName :
                 commands.keySet()) {
             if (request.getParameter(commandName) != null) return commandName;

@@ -19,6 +19,7 @@
 <h2>Hello Skarlet's recording studio!</h2>
 
 <% Entity model = (Entity) session.getAttribute(View.model); %>
+
 <div class="main-block grid-container-2half">
     <div class="disk-block">
         <div class="disk grid-container">
