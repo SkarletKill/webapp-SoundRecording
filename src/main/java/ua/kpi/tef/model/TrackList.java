@@ -1,6 +1,9 @@
 package ua.kpi.tef.model;
 
+import ua.kpi.tef.model.DB.entity.Track;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by SkarletRED on 30.04.2018.
@@ -17,7 +20,7 @@ public class TrackList extends ArrayList<Track> {
         resetIndex();
     }
 
-    public TrackList(ArrayList<Track> arrayList){
+    public TrackList(List<Track> arrayList){
         this();
         this.addAll(arrayList);
     }
@@ -38,7 +41,7 @@ public class TrackList extends ArrayList<Track> {
 
     public void countDuration() {
         this.songsDuration = 0L;
-        this.forEach(t -> songsDuration += t.getDuration());
+        this.forEach(t -> songsDuration += t.getDurationMS());
     }
 
     private void resetIndex() {

@@ -1,10 +1,9 @@
 package ua.kpi.tef.model.DB;
 
-import ua.kpi.tef.model.Disk;
-import ua.kpi.tef.model.MusicGenre;
-import ua.kpi.tef.model.Track;
+import ua.kpi.tef.model.DB.dao.Database;
+import ua.kpi.tef.model.DB.entity.Disk;
 
-import java.sql.*;
+import java.util.List;
 
 /**
  * Created by SkarletRED on 10.05.2018.
@@ -53,6 +52,20 @@ public class DBTest {
 //            if (genre.name().equals(genreString)) return genre;
 //        }
 //        return null;
+
+//        String query = "SELECT * FROM periodicals.editions";
+//
+//        try {
+//            DBService service = DBService.getInstance();
+//            service.prepareStatement(query);
+//            // execute query
+//            service.getAllDisks();
+//            service.getConnection().close();
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+
     }
 
 }

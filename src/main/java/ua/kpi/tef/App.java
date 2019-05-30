@@ -1,10 +1,6 @@
 package ua.kpi.tef;
 
-import ua.kpi.tef.model.Track;
-import ua.kpi.tef.model.TrackList;
 import ua.kpi.tef.view.View;
-
-import java.util.List;
 
 /**
  * Created by SkarletRED on 30.04.2018.

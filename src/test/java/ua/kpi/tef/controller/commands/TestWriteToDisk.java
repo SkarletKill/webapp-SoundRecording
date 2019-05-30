@@ -5,13 +5,15 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import ua.kpi.tef.model.*;
+import ua.kpi.tef.model.DB.entity.Disk;
+import ua.kpi.tef.model.DB.entity.Track;
+import ua.kpi.tef.model.DB.service.DiskTrackService;
 import ua.kpi.tef.model.exeptions.DiskSpaceExeption;
 import ua.kpi.tef.view.View;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 /**
@@ -26,7 +28,7 @@ public class TestWriteToDisk {
     HttpServletRequest request;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
         model = new Entity();
         command = new WriteToDisk();
@@ -34,15 +36,15 @@ public class TestWriteToDisk {
 
     @Test
     public void overflowFromModel(){
-        String diskName = "TestDisk";
+        String diskName = "Disk for testing";
         int mbCapacity = 10;
         new Disk(diskName, mbCapacity);
         TrackList tracks = model.getTrackList();
         tracks.add(new Track("TrackTitle", 100500, 1024*mbCapacity + 1));
 
         try {
-            model.writeToDisk(diskName, tracks);
-            assertFalse(true);
+            DiskTrackService.getInstance().recordTracks(diskName, tracks);
+            fail();
         } catch (DiskSpaceExeption diskSpaceExeption) {
             assertTrue(true);
         }

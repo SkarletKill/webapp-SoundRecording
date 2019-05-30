@@ -20,7 +20,7 @@ public class View implements BundleConstants, StringKeys{
                     new Locale(en));    // English
 
     public static String REGEX_DURATION = "\\d{1,2}:\\d{1,2}";
-    public static String SING_DOUBLEPOINT = ":";
+    public static String SING_COLON = ":";
     /**
      * This method is used to get message which it
      * accept as a parameter, but translated with

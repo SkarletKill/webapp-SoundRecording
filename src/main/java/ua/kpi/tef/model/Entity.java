@@ -1,7 +1,12 @@
 package ua.kpi.tef.model;
 
-import ua.kpi.tef.model.exeptions.DiskSpaceExeption;
+import ua.kpi.tef.model.DB.dao.Database;
+import ua.kpi.tef.model.DB.entity.Disk;
+import ua.kpi.tef.model.DB.entity.Genre;
+import ua.kpi.tef.model.DB.entity.Track;
+import ua.kpi.tef.model.DB.service.DiskTrackService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,28 +17,12 @@ import java.util.stream.Collectors;
 public class Entity {
     private Disk disk;
     private TrackList trackList;
-
-    static{
-        new Disk("Local disk A:", 4000);
-        new Disk("Local disk B:", 4000);
-        new Disk("Local disk C:", 4000);
-    }
+    private List<Track> diskTrackList;
 
     public Entity() {
         this.disk = new Disk("My songs", 4000);
         this.trackList = new TrackList();
-    }
-
-    /**
-     * Write an assembly to disk
-     *
-     * @param assembly
-     */
-    public void writeToDisk(String diskName, TrackList assembly) throws DiskSpaceExeption {
-        for (Disk disk : Disk.getDisks()) {
-            if (disk.getTitle().equals(diskName))
-                disk.recordTrackAll(trackList);
-        }
+        this.diskTrackList = new ArrayList<>();
     }
 
     /**
@@ -41,7 +30,8 @@ public class Entity {
      * @return the duration of songs on the disk
      */
     public long countDuration(Disk disk) {
-        return disk.getTrackList().getSongsDuration();
+        TrackList trackList = new TrackList(DiskTrackService.getInstance().getTracksForDisk(disk));
+        return trackList.getSongsDuration();
     }
 
     /**
@@ -49,12 +39,18 @@ public class Entity {
      *
      * @param genre
      */
-    public void sortByStyle(Disk disk, MusicGenre genre) {
-        List<Track> withGenre = disk.getTrackList().stream().filter(t -> t.getGenre().equals(genre)).collect(Collectors.toList());
-        List<Track> withoutGenre = disk.getTrackList().stream().filter(t -> !t.getGenre().equals(genre)).collect(Collectors.toList());
-        disk.getTrackList().clear();
-        disk.getTrackList().addAll(withGenre);
-        disk.getTrackList().addAll(withoutGenre);
+    public void sortByStyle(List<Track> tracks, Genre genre) {
+        List<Track> withGenre = tracks.stream().filter(t -> t.getGenreId() == genre.getId()).collect(Collectors.toList());
+        List<Track> withoutGenre = tracks.stream().filter(t -> t.getGenreId() != genre.getId()).collect(Collectors.toList());
+
+//        DiskTrackService.getInstance().getTracksForDisk(model.getDiskTrackList());
+        List<Track> sorted = new ArrayList<>();
+        sorted.addAll(withGenre);
+        sorted.addAll(withoutGenre);
+//        disk.getTrackList().clear();
+//        disk.getTrackList().addAll(withGenre);
+//        disk.getTrackList().addAll(withoutGenre);
+        diskTrackList = sorted;
     }
 
     private boolean valueBetween(int value, int from, int to) {
@@ -62,8 +58,8 @@ public class Entity {
     }
 
     public void selectDisk(String disk) {
-        int index = Disk.getIndexByTitle(disk);
-        if (index >= 0) this.disk = Disk.getDisks().get(index);
+        Disk byTitle = Database.disksDao().getByTitle(disk);
+        if (byTitle != null) this.disk = byTitle;
     }
 
     public Disk getDisk() {
@@ -72,5 +68,9 @@ public class Entity {
 
     public TrackList getTrackList() {
         return trackList;
+    }
+
+    public List<Track> getDiskTrackList() {
+        return diskTrackList;
     }
 }

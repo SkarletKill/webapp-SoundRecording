@@ -1,5 +1,7 @@
 package ua.kpi.tef.controller.commands;
 
+import ua.kpi.tef.model.DB.entity.Track;
+import ua.kpi.tef.model.DB.service.DiskTrackService;
 import ua.kpi.tef.model.Entity;
 import ua.kpi.tef.model.exeptions.InvalidTimeFormatExeption;
 import ua.kpi.tef.model.TrackList;
@@ -23,13 +25,14 @@ public class FindTracks implements Command {
         try {
             if (!fromStr.matches(View.REGEX_DURATION)) throw new InvalidTimeFormatExeption();
             if (!toStr.matches(View.REGEX_DURATION)) throw new InvalidTimeFormatExeption();
-            List<Integer> fromArr = Arrays.stream(fromStr.split(View.SING_DOUBLEPOINT)).map((String e) -> Integer.parseInt(e)).collect(Collectors.toList());
-            List<Integer> toArr = Arrays.stream(toStr.split(View.SING_DOUBLEPOINT)).map((String e) -> Integer.parseInt(e)).collect(Collectors.toList());
+            List<Integer> fromArr = Arrays.stream(fromStr.split(View.SING_COLON)).map(Integer::parseInt).collect(Collectors.toList());
+            List<Integer> toArr = Arrays.stream(toStr.split(View.SING_COLON)).map(Integer::parseInt).collect(Collectors.toList());
             int from = (fromArr.get(0) * 60 + fromArr.get(1)) * 1000;
             int to = (toArr.get(0) * 60 + toArr.get(1)) * 1000;
 
-            TrackList found = model.getDisk().getTrackList().stream()
-                    .filter(track -> track.getDuration() >= from && track.getDuration() <= to)
+            List<Track> tracksForDisk = DiskTrackService.getInstance().getTracksForDisk(model.getDisk());
+            TrackList found = tracksForDisk.stream()
+                    .filter(track -> track.getDurationMS() >= from && track.getDurationMS() <= to)
                     .collect(Collectors.toCollection(TrackList::new));
 
             request.setAttribute(View.diskFindFilter, found);

@@ -13,7 +13,6 @@ import java.util.*;
 
 public class Servlet extends HttpServlet {
     private String page = "mainPage.jsp";
-    private String diskOutOfMemory = "diskSpaceException.jsp";
     private Entity model = new Entity();
     private Map<String, Command> commands;
     private Command command = null;

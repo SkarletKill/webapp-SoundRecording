@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="@localhost">
-  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.7">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.11">
     <root id="1">
       <DefaultCasing>lower/lower</DefaultCasing>
     </root>
@@ -941,18 +941,18 @@
     </table>
     <column id="239" parent="236" name="title">
       <Position>1</Position>
-      <DataType>varchar(20)|0</DataType>
+      <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="240" parent="236" name="fullCapacity">
       <Position>2</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="241" parent="236" name="freeCapacity">
       <Position>3</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="242" parent="236" name="PRIMARY">
@@ -962,32 +962,32 @@
     </key>
     <column id="243" parent="237" name="ID">
       <Position>1</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="244" parent="237" name="Title">
       <Position>2</Position>
-      <DataType>varchar(30)|0</DataType>
+      <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="245" parent="237" name="Artist">
       <Position>3</Position>
-      <DataType>varchar(30)|0</DataType>
+      <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="246" parent="237" name="Genre">
       <Position>4</Position>
-      <DataType>varchar(10)|0</DataType>
+      <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="247" parent="237" name="Duration">
       <Position>5</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -998,29 +998,29 @@
     </key>
     <column id="249" parent="238" name="ID">
       <Position>1</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="250" parent="238" name="Title">
       <Position>2</Position>
-      <DataType>varchar(30)|0</DataType>
+      <DataType>varchar(30)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="251" parent="238" name="Artist">
       <Position>3</Position>
-      <DataType>varchar(30)|0</DataType>
+      <DataType>varchar(30)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="252" parent="238" name="Genre">
       <Position>4</Position>
-      <DataType>varchar(10)|0</DataType>
+      <DataType>varchar(10)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="253" parent="238" name="Duration">
       <Position>5</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="254" parent="238" name="PRIMARY">

@@ -1,5 +1,6 @@
 package ua.kpi.tef.controller.commands;
 
+import ua.kpi.tef.model.DB.service.DiskTrackService;
 import ua.kpi.tef.model.exeptions.DiskSpaceExeption;
 import ua.kpi.tef.model.Entity;
 import ua.kpi.tef.view.View;
@@ -17,7 +18,7 @@ public class WriteToDisk implements Command {
     public String execute(HttpServletRequest request, Entity model) {
         if (request.getParameter(View.disksForPl) != null) {
             try {
-                model.writeToDisk(request.getParameter(View.disksForPl), model.getTrackList());
+                DiskTrackService.getInstance().recordTracks(request.getParameter(View.disksForPl), model.getTrackList());
                 return index;
             } catch (DiskSpaceExeption diskSpaceExeption) {
                 return diskOutOfMemory;

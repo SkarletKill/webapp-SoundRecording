@@ -1,7 +1,6 @@
 package ua.kpi.tef.controller.commands;
 
 import ua.kpi.tef.model.Entity;
-import ua.kpi.tef.model.Track;
 import ua.kpi.tef.view.View;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,8 +23,8 @@ public class CountDurationOnDisk implements Command {
         mm = ss / 60;
         ss %= 60;
         String soundsDuration = new StringBuffer().append(addZero(hh)).
-                append(View.SING_DOUBLEPOINT).append(addZero(mm)).
-                append(View.SING_DOUBLEPOINT).append(addZero(ss)).toString();
+                append(View.SING_COLON).append(addZero(mm)).
+                append(View.SING_COLON).append(addZero(ss)).toString();
         request.setAttribute(View.diskDurationValue, soundsDuration);
         return index;
     }

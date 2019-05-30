@@ -8,6 +8,13 @@
 <%@ page import="ua.kpi.tef.view.View" %>
 <%@ page import="ua.kpi.tef.controller.Servlet" %>
 <%@ page import="ua.kpi.tef.model.*" %>
+<%@ page import="ua.kpi.tef.model.DB.entity.Disk" %>
+<%@ page import="ua.kpi.tef.model.DB.dao.Database" %>
+<%@ page import="java.util.Objects" %>
+<%@ page import="ua.kpi.tef.model.DB.service.DiskTrackService" %>
+<%@ page import="ua.kpi.tef.model.DB.entity.Track" %>
+<%@ page import="java.util.List" %>
+<%@ page import="ua.kpi.tef.model.DB.entity.Genre" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -29,7 +36,7 @@
                 <select name="<%=View.disksForDisk%>" onchange="this.parentElement.submit()">
                     <option value="0" selected disabled style="display: none"><%= View.getLocaleMassage(View.DISK_SELECT) %>
                     </option>
-                    <% for(Disk disk: Disk.getDisks()){ %>
+                    <% for(Disk disk: Objects.requireNonNull(Database.disksDao().getAll())){ %>
                         <% if(disk.getTitle().equals(model.getDisk().getTitle())) {%>
                         <%--<% if(request.getParameter("d-disks[]") != null && request.getParameter("d-disks[]").equals(disk.getTitle())) {%>--%>
                             <option selected value="<%= disk.getTitle() %>"><%= disk.getTitle() %></option>
@@ -89,7 +96,7 @@
             <label><%= View.getLocaleMassage(View.DISK_TRACKLIST_TEXT) %>
             </label>
             <div class="tracklist">
-                <% TrackList trackList = model.getDisk().getTrackList(); %>
+                <% List<Track> trackList = DiskTrackService.getInstance().getTracksForDisk(model.getDisk()); %>
                 <% if(request.getAttribute(View.diskFindFilter) != null) { %>
                     <% trackList = (TrackList) request.getAttribute(View.diskFindFilter); %>
                 <% } %>
@@ -129,12 +136,15 @@
 
                 <div class="genre grid-container-pl-two">
                     <label><%= View.getLocaleMassage(View.PLAYLIST_SONG_GENRE) %></label>
-                    <select name="<%=View.songGenres%>">
+                    <select name="<%=View.songGenre%>">
                         <option value="0" selected disabled style="display: none"><%= View.getLocaleMassage(View.DISK_SORT_SELECT) %>
                         </option>
-                        <c:forEach items="${MusicGenre.values()}" var="item">
-                            <option value="${item.name().toLowerCase()}">${item.name()}</option>
-                        </c:forEach>
+                        <% for (Genre genre : Database.genresDao().getAll()) {%>
+                            <option value="<%=genre.getName()%>"><%=genre.getName()%></option>
+                        <% }%>
+                        <%--<c:forEach items="${MusicGenre.values()}" var="item">--%>
+                            <%--<option value="${item.name().toLowerCase()}">${item.name()}</option>--%>
+                        <%--</c:forEach>--%>
                     </select>
                 </div>
 
@@ -160,9 +170,12 @@
                 <select name="<%=View.disksForPl%>">
                     <option value="0" selected disabled style="display: none"><%= View.getLocaleMassage(View.DISK_SELECT) %>
                     </option>
-                    <c:forEach items="${Disk.getDisks()}" var="disk">
-                        <option value="${disk.getTitle()}">${disk.getTitle()}</option>
-                    </c:forEach>
+                    <% for (Disk disk : Database.disksDao().getAll()) {%>
+                        <option value="<%=disk.getTitle()%>"><%=disk.getTitle()%></option>
+                    <% }%>
+                    <%--<c:forEach items="${Disk.getDisks()}" var="disk">--%>
+                        <%--<option value="disk.getTitle()}">${disk.getTitle()}</option>--%>
+                    <%--</c:forEach>--%>
                 </select>
                 <input type="submit" class="submit" value="<%=View.getLocaleMassage(View.PLAYLIST_BUTTON_WRITE)%>"
                        name="<%=View.plWriteButton%>">

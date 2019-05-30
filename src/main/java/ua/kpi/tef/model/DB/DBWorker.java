@@ -12,26 +12,29 @@ import java.sql.SQLException;
  */
 
 public class DBWorker {
-    private final String URL = "jdbc:mysql://localhost:3306/soundrecording";
+    private final String URL = "jdbc:mysql://localhost:3306/soundrecording_studio";
     private final String USERNAME = "root";
-    private final String PASSWORD = "H0LL0W";
+    private final String PASSWORD = "";
 
     private Connection connection;
 
-    public DBWorker(){
-        try{
+    public DBWorker() {
+        try {
             Driver driver = new com.mysql.cj.jdbc.Driver();
             DriverManager.registerDriver(driver);
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        } catch (SQLException ex){
+            connection = createConnection();
+        } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
     }
 
     public Connection getConnection() {
         return connection;
+    }
+
+    private Connection createConnection() throws SQLException {
+        return DriverManager.getConnection(URL + "?user=" + USERNAME + "&password=" + PASSWORD
+                + "&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
     }
 }

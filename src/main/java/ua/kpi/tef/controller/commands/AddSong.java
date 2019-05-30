@@ -22,8 +22,9 @@ public class AddSong implements Command {
         ITrackMaker trackMaker = new TrackMaker();
         setAttributeString(request, View.songTitle, trackMaker);
         setAttributeString(request, View.songArtist, trackMaker);
-        setAttributeString(request, View.songGenre, trackMaker);
+        setAttributeString(request, View.songGenre, trackMaker);        //should fix
         setAttributeInteger(request, View.songDuration, trackMaker, this::getParsedDuration);
+        if (!page.equals(index)) return page;
         model.getTrackList().add(trackMaker.get());
         return page;
     }
@@ -44,8 +45,8 @@ public class AddSong implements Command {
 
     private Integer getParsedDuration(String durStr) {
         if (!durStr.matches(View.REGEX_DURATION)) return null;
-        String[] arr = durStr.split(View.SING_DOUBLEPOINT);
-        if(Integer.parseInt(arr[1]) > 59) return null;
+        String[] arr = durStr.split(View.SING_COLON);
+        if (Integer.parseInt(arr[1]) > 59) return null;
         return (Integer.parseInt(arr[0]) * 60 + Integer.parseInt(arr[1])) * 1000;
     }
 }

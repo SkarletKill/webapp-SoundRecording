@@ -1,7 +1,10 @@
 package ua.kpi.tef.model.trackFactory;
 
-import ua.kpi.tef.model.MusicGenre;
-import ua.kpi.tef.model.Track;
+import ua.kpi.tef.model.DB.dao.Database;
+import ua.kpi.tef.model.DB.entity.Genre;
+import ua.kpi.tef.model.DB.entity.Track;
+
+import java.util.Objects;
 
 /**
  * Created by SkarletRED on 07.05.2018.
@@ -28,12 +31,9 @@ public class TrackMaker implements ITrackMaker {
                 break;
             case "genre":
                 String val = (String) value;
-                for (MusicGenre genre: MusicGenre.values()) {
-                    if(genre.name().equals(val.toUpperCase())){
-                        track.setGenre(genre);
-                        break;
-                    }
-                }
+                Genre genre = Database.genresDao().getById(Integer.parseInt(val));
+//                Genre genre = Database.genresDao().getByName(val);
+                track.setGenreId(Objects.requireNonNull(genre).getId());
                 break;
             case "year":
                 track.setYear((Integer) value);
