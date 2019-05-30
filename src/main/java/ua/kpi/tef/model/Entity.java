@@ -20,7 +20,7 @@ public class Entity {
     private List<Track> diskTrackList;
 
     public Entity() {
-        this.disk = new Disk("My songs", 4000);
+        this.disk = new Disk("Please select disk", 0);
         this.trackList = new TrackList();
         this.diskTrackList = new ArrayList<>();
     }
@@ -31,6 +31,7 @@ public class Entity {
      */
     public long countDuration(Disk disk) {
         TrackList trackList = new TrackList(DiskTrackService.getInstance().getTracksForDisk(disk));
+        trackList.countDuration();
         return trackList.getSongsDuration();
     }
 
@@ -43,13 +44,9 @@ public class Entity {
         List<Track> withGenre = tracks.stream().filter(t -> t.getGenreId() == genre.getId()).collect(Collectors.toList());
         List<Track> withoutGenre = tracks.stream().filter(t -> t.getGenreId() != genre.getId()).collect(Collectors.toList());
 
-//        DiskTrackService.getInstance().getTracksForDisk(model.getDiskTrackList());
         List<Track> sorted = new ArrayList<>();
         sorted.addAll(withGenre);
         sorted.addAll(withoutGenre);
-//        disk.getTrackList().clear();
-//        disk.getTrackList().addAll(withGenre);
-//        disk.getTrackList().addAll(withoutGenre);
         diskTrackList = sorted;
     }
 
@@ -60,6 +57,7 @@ public class Entity {
     public void selectDisk(String disk) {
         Disk byTitle = Database.disksDao().getByTitle(disk);
         if (byTitle != null) this.disk = byTitle;
+        this.diskTrackList = DiskTrackService.getInstance().getTracksForDisk(this.disk);
     }
 
     public Disk getDisk() {

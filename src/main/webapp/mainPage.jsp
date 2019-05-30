@@ -68,9 +68,9 @@
                 <select name="<%=View.diskGenres%>">
                     <option value="0" selected disabled style="display: none"><%= View.getLocaleMassage(View.DISK_SORT_SELECT) %>
                     </option>
-                    <c:forEach items="${MusicGenre.values()}" var="item">
-                        <option value="${item.name().toLowerCase()}">${item.name()}</option>
-                    </c:forEach>
+                    <% for (Genre genre : Database.genresDao().getAll()) {%>
+                        <option value="<%=genre.getName()%>"><%=genre.getName()%></option>
+                    <% }%>
                 </select>
                 <input type="submit" class="submit" value="<%=View.getLocaleMassage(View.DISK_SORT_BUTTON)%>"
                        name="<%=View.diskSortButton%>">
@@ -96,7 +96,7 @@
             <label><%= View.getLocaleMassage(View.DISK_TRACKLIST_TEXT) %>
             </label>
             <div class="tracklist">
-                <% List<Track> trackList = DiskTrackService.getInstance().getTracksForDisk(model.getDisk()); %>
+                <% List<Track> trackList = model.getDiskTrackList(); %>
                 <% if(request.getAttribute(View.diskFindFilter) != null) { %>
                     <% trackList = (TrackList) request.getAttribute(View.diskFindFilter); %>
                 <% } %>

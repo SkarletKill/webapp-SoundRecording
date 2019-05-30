@@ -31,8 +31,8 @@ public class TrackMaker implements ITrackMaker {
                 break;
             case "genre":
                 String val = (String) value;
-                Genre genre = Database.genresDao().getById(Integer.parseInt(val));
-//                Genre genre = Database.genresDao().getByName(val);
+//                Genre genre = Database.genresDao().getById(Integer.parseInt(val));
+                Genre genre = Database.genresDao().getByName(val);
                 track.setGenreId(Objects.requireNonNull(genre).getId());
                 break;
             case "year":
